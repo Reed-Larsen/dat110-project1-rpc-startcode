@@ -7,25 +7,23 @@ import no.hvl.dat110.TODO;
 public class MessageUtils {
 
 	public static final int SEGMENTSIZE = 128;
-
 	public static int MESSAGINGPORT = 8080;
 	public static String MESSAGINGHOST = "localhost";
 
 	public static byte[] encapsulate(Message message) {
 		
-		byte[] segment = null;
-		byte[] data;
-		
-		// TODO - START
-		
-		// encapulate/encode the payload data of the message and form a segment
-		// according to the segment format for the messaging layer
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-			
-		// TODO - END
-		return segment;
+
+		byte[] data = message.getData(); //Henter data fra meldingen.
+		int dataLength = data.length; //Finner lengden på dataen
+
+		if (dataLength > 127){
+			throw new IllegalArgumentException("Data length exceed 127 bytes");
+		}
+		byte[] segment = new byte[SEGMENTSIZE];
+		segment[0] = (byte) dataLength; //Setter første byte til lengden av dataen.
+		System.arraycopy(data, 0, segment, 1, dataLength);
+
+		return segment; //Returnerer det innkapslede segmentet.
 		
 	}
 
