@@ -26,7 +26,7 @@ public class MessageUtils {
 		return segment; //Returnerer det innkapslede segmentet.
 		
 	}
-
+//Skal begynne på denne
 	public static Message decapsulate(byte[] segment) {
 
 		Message message = null;
