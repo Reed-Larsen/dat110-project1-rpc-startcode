@@ -31,15 +31,15 @@ public class MessageUtils {
 
 		Message message = null;
 		
-		// TODO - START
-		// decapsulate segment and put received payload data into a message
+		int dataLength = segment[0]; // Føste byte inneholder lengden av meldingen.
+		 if (dataLength < 0 || dataLength > 127){
+			 throw new IllegalArgumentException("Invalid data length in segment");
+		 }
+
+		 byte[] data = Arrays.copyOfRange(segment, 1, 1 + dataLength);
+		 message = new Message(data); //Oppretter en ny melding med dataen.
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - END
-		
-		return message;
+		return message; // returnerer meldingen.
 		
 	}
 	
