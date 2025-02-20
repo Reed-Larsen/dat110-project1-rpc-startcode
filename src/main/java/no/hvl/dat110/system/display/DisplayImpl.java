@@ -20,11 +20,12 @@ public class DisplayImpl extends RPCRemoteImpl {
 		// Unmarshall the received string
 		String message = RPCUtils.unmarshallString(param);
 
-		// Call the write method
+		// Print the message to simulate a display output
 		write(message);
 
 		// Return marshalled void response
 		return RPCUtils.marshallVoid();
 	}
+
 }
 
